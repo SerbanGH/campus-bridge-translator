@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- UPT facts and rules (doctors, office hours, IGI, dorm) live as pure functions in `src/lib/copilot/upt.ts` and are covered by `src/test/copilot-rules.test.ts` — keeps the rule logic testable and in one place.
+- Every AI tool has an offline demo path in `src/lib/copilot/*` and a live path through server functions in `src/lib/copilot/ai.functions.ts` (Lovable AI Gateway) — the app must keep working during demos with no network or credits.
+- Shared sign-ups and poll votes are insert-only for visitors; totals are read via security-definer count functions — visitors never read other students' contact details.
+- Per-device tool state (router checklist, dorm logger, pass-down) uses the hydration-safe `useLocalStorage` hook — avoids SSR hydration mismatches.
