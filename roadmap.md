@@ -7,3 +7,4 @@
 - [ ] Comparison strip + footer
 - [ ] Enable Lovable Cloud: shared sign-ups + votes tables
 - [ ] Tests for UPT rules (doctor per faculty, office hours, clashes, poll %)
+- [ ] Answer: can students connect their Virtual Campus (cv.upt.ro) account instead of copy-pasting? (feasibility check, awaiting user decision)
