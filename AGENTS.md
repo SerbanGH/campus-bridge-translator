@@ -34,3 +34,4 @@ use the editor.
 - Every AI tool has an offline demo path in `src/lib/copilot/*` and a live path through server functions in `src/lib/copilot/ai.functions.ts` (Lovable AI Gateway) — the app must keep working during demos with no network or credits.
 - Shared sign-ups and poll votes are insert-only for visitors; totals are read via security-definer count functions — visitors never read other students' contact details.
 - Per-device tool state (router checklist, dorm logger, pass-down) uses the hydration-safe `useLocalStorage` hook — avoids SSR hydration mismatches.
+- Virtual Campus (cv.upt.ro, Moodle) access goes through `src/lib/copilot/vc.functions.ts`: the student's password is exchanged once for a Moodle mobile token, which is stored in `vc_connections` (service-role only, no client policies) and only used server-side for the caller's own row — the token grants full account access and must never reach the browser.
