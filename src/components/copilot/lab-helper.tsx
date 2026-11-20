@@ -9,6 +9,7 @@ import { analyzeLabAi } from "@/lib/copilot/ai.functions";
 import { analyzeLabOffline, LAB_EXAMPLE, type LabAnalysis } from "@/lib/copilot/lab";
 import { useAiMode } from "./ai-mode";
 import { CopyButton } from "./copy-button";
+import { VirtualCampusPanel, type VcPick } from "./vc-panel";
 
 export function LabHelper() {
   const { live } = useAiMode();
@@ -38,6 +39,18 @@ export function LabHelper() {
     }
   };
 
+  const fromVc = (p: VcPick) => {
+    if ("pdfDataUrl" in p) {
+      setPdf({ name: p.title, dataUrl: p.pdfDataUrl });
+      setText("");
+      if (!live) toast("PDFs are read with Live AI — switch it on above.");
+    } else {
+      setText(p.text);
+      setPdf(null);
+    }
+    toast.success(`Loaded “${p.title}” — tap Translate & extract`);
+  };
+
   const run = async () => {
     if (!text.trim() && !pdf) {
       toast.error("Paste an announcement or load the UPT example");
@@ -63,6 +76,7 @@ export function LabHelper() {
   return (
     <div className="grid gap-5 lg:grid-cols-2">
       <div className="space-y-3">
+        <VirtualCampusPanel onPick={fromVc} />
         <div className="flex flex-wrap gap-2">
           <Button
             type="button"

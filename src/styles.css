@@ -43,6 +43,9 @@
   --color-warning: var(--warning);
   --color-warning-foreground: var(--warning-foreground);
   --color-warning-soft: var(--warning-soft);
+  --color-google: var(--google);
+  --color-google-foreground: var(--google-foreground);
+  --color-google-border: var(--google-border);
   --color-navy: var(--navy);
   --color-navy-foreground: var(--navy-foreground);
   --color-navy-muted: var(--navy-muted);
@@ -68,6 +71,11 @@
 
 :root {
   --radius: 0.875rem;
+
+  /* Google sign-in light theme (brand guidelines) */
+  --google: oklch(1 0 0);
+  --google-foreground: oklch(0.235 0 0);
+  --google-border: oklch(0.55 0.004 145);
 
   /* Brand: navy #0F172A, indigo #4F46E5, emerald #10B981 */
   --navy: oklch(0.208 0.042 265.755);
